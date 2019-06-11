@@ -1,12 +1,43 @@
 <%- include('bootheader') -%>
+<%- include('menubar') -%>
     <div class="jumbotron">
         <h1>Tutor Comment Form</h1>
-        <p>Add comments to your tutor here</p>
+        <p>Please add comments to your tutor here</p>
     </div>
 
     <form method="post" action="/process">
       Tutor's name: <input type="text" name="tutorName"><br>
-      Comment: <textarea name ="comment"></textarea><br>
+      <br>
+      <br>
+      Tutee's name: <input type="text" name="tuteeName"><br>
+      <br>
+      <br>
+      Score: <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="5">
+          <label class="form-check-label" for="inlineRadio1">5</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="4">
+          <label class="form-check-label" for="inlineRadio2">4</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" >
+          <label class="form-check-label" for="inlineRadio3">3</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="2" >
+          <label class="form-check-label" for="inlineRadio3">2</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="1" >
+          <label class="form-check-label" for="inlineRadio3">1</label>
+        </div>
+        <br>
+        <br>
+        <br>
+      Comment: <textarea rows="4" cols="50" name ="comment"></textarea><br>
+      <br>
+      <br>
       <input type="submit">
     </form>
 

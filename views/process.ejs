@@ -1,4 +1,5 @@
 <%- include('bootheader') -%>
+<%- include('menubar') -%>
     <div class="jumbotron">
         <h1>Tutor Comment Form</h1>
         <p>Add comments to your tutor here</p>
@@ -6,7 +7,9 @@
 
     You enter the following ..<br>
 
-    The tutorName was: <%= tutorName %><br>
+    The tutor name was: <%= tutorName %><br>
+    The tutee name was: <%= tuteeName %><br>
+    The score was: <%= score %><br>
     The comments were: <br><%= coms %><br>
 
 <%- include('bootfooter') -%>

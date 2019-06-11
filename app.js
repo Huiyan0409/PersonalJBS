@@ -23,15 +23,33 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //add here to create the logic of new page, new page in views
+app.use(function(req,res,next){
+  console.log("about to look for routes!!!")
+  //console.dir(req.hearers)
+  next()
+});
+
+app.get('/', function(req, res, next) {
+  res.render('index',{title:"TutorMatching Demo"});
+});
+
 app.get('/tutorcomment', function(req, res, next) {
   res.render('tutorcomment',{title:"Tutor Comment"});
 });
 
-app.post('/process', function(req, res, next) {
+app.use(function(req,res,next){
+  console.log("about to look for post routes!!!")
+  next()
+});
+
+function processFormData(req,res,next){
   console.dir(req.body)
   res.render('process',
-    {title:"Form Data", tutorName:req.body.tutorName, coms:req.body.comment});
-});
+    {title:"Form Data", tutorName:req.body.tutorName, coms:req.body.comment, score:req.body.inlineRadioOptions, tutee:req.body.tuteeName});
+}
+
+app.post('/process', processFormData);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
