@@ -37,18 +37,30 @@ app.get('/tutorcomment', function(req, res, next) {
   res.render('tutorcomment',{title:"Tutor Comment"});
 });
 
+function processFormData(req,res,next){
+  console.dir(req.body)
+  res.render('process',
+    {title:"Form Data", tutorName:req.body.tutorName, coms:req.body.comment, score:req.body.inlineRadioOptions, tuteeName:req.body.tuteeName});
+}
+app.post('/process', processFormData);
+
 app.use(function(req,res,next){
   console.log("about to look for post routes!!!")
   next()
 });
 
-function processFormData(req,res,next){
-  console.dir(req.body)
-  res.render('process',
-    {title:"Form Data", tutorName:req.body.tutorName, coms:req.body.comment, score:req.body.inlineRadioOptions, tutee:req.body.tuteeName});
-}
 
-app.post('/process', processFormData);
+app.get('/tuteecomment', function(req, res, next) {
+  res.render('tuteecomment',{title:"Tutee Comment"});
+});
+
+
+function processFormData1(req,res,next){
+  console.dir(req.body)
+  res.render('tutorprocess',
+    {title:"Form Data", tutorName1:req.body.tutorName1, coms1:req.body.comment1, scoreStudent:req.body.inlineRadioOptionsStudent, scoreParent:req.body.inlineRadioOptionsParent, tuteeName1:req.body.tuteeName1});
+}
+app.post('/tutorprocess', processFormData1);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
