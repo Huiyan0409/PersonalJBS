@@ -23,7 +23,15 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //add here to create the logic of new page, new page in views
+app.get('/tutorcomment', function(req, res, next) {
+  res.render('tutorcomment',{title:"Tutor Comment"});
+});
 
+app.post('/process', function(req, res, next) {
+  console.dir(req.body)
+  res.render('process',
+    {title:"Form Data", tutorName:req.body.tutorName, coms:req.body.comment});
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

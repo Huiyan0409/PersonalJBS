@@ -1,0 +1,13 @@
+<%- include('bootheader') -%>
+    <div class="jumbotron">
+        <h1>Tutor Comment Form</h1>
+        <p>Add comments to your tutor here</p>
+    </div>
+
+    <form method="post" action="/process">
+      Tutor's name: <input type="text" name="tutorName"><br>
+      Comment: <textarea name ="comment"></textarea><br>
+      <input type="submit">
+    </form>
+
+<%- include('bootfooter') -%>

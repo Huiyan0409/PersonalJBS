@@ -1,12 +1,11 @@
 <!--This is the main page when you start-->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('bootheader') -%>
+    <div class="jumbotron">
+        <h1>Tutor Matching</h1>
+        <p>We're here to help you find the best tutor!</p>
+    </div>
+    <ul>
+      <li><a href="/tutorcomment">Demo of Tutor Comment Form</a></li>
+    </ul>
+<%- include('bootfooter') -%>
+  
