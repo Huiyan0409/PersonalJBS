@@ -7,6 +7,17 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+//connect to mongodb
+const mongoose = require( 'mongoose' );
+mongoose.connect( 'mongodb://localhost/tutorMatching' );
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we are connected!")
+});
+
+const tutorCommentController = require('./controllers/tutorCommentController')
+
 var app = express();
 
 // view engine setup
@@ -24,7 +35,7 @@ app.use('/users', usersRouter);
 
 //add here to create the logic of new page, new page in views
 app.use(function(req,res,next){
-  console.log("about to look for routes!!!")
+  //console.log("about to look for routes!!!")
   //console.dir(req.hearers)
   next()
 });
@@ -38,14 +49,16 @@ app.get('/tutorcomment', function(req, res, next) {
 });
 
 function processFormData(req,res,next){
-  console.dir(req.body)
+  //console.dir(req.body)
   res.render('process',
     {title:"Form Data", tutorName:req.body.tutorName, coms:req.body.comment, score:req.body.inlineRadioOptions, tuteeName:req.body.tuteeName});
 }
-app.post('/process', processFormData);
+app.post('/process', tutorCommentController.saveTutorComment)
+
+app.get('/showtutorComment', tutorCommentController.getAllTutorComments)
 
 app.use(function(req,res,next){
-  console.log("about to look for post routes!!!")
+  //console.log("about to look for post routes!!!")
   next()
 });
 
@@ -56,11 +69,13 @@ app.get('/tuteecomment', function(req, res, next) {
 
 
 function processFormData1(req,res,next){
-  console.dir(req.body)
+  //console.dir(req.body)
   res.render('tutorprocess',
     {title:"Form Data", tutorName1:req.body.tutorName1, coms1:req.body.comment1, scoreStudent:req.body.inlineRadioOptionsStudent, scoreParent:req.body.inlineRadioOptionsParent, tuteeName1:req.body.tuteeName1});
 }
 app.post('/tutorprocess', processFormData1);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
