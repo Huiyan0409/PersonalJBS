@@ -1,0 +1,16 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>Tutee Comments</h1>
+    </div>
+    <ol>
+    <%for(i=0; i<tuteeComments.length; i++){ %>
+      <li>
+            <i><%= tuteeComments[i].tutorName %></\/i>
+            <i><%= tuteeComments[i].tuteeName %></\/i>
+            <i><%= tuteeComments[i].studentScore %></\/i>
+            <i><%= tuteeComments[i].parentScore %></\/i>
+            <i><%= tuteeComments[i].comment %></\/i></li>
+    <% }%>
+    </ol>
+<%- include('bootfooter') -%>

@@ -17,6 +17,7 @@ db.once('open', function() {
 });
 
 const tutorCommentController = require('./controllers/tutorCommentController')
+const tuteeCommentController = require('./controllers/tuteeCommentController')
 
 var app = express();
 
@@ -73,7 +74,13 @@ function processFormData1(req,res,next){
   res.render('tutorprocess',
     {title:"Form Data", tutorName1:req.body.tutorName1, coms1:req.body.comment1, scoreStudent:req.body.inlineRadioOptionsStudent, scoreParent:req.body.inlineRadioOptionsParent, tuteeName1:req.body.tuteeName1});
 }
-app.post('/tutorprocess', processFormData1);
+app.post('/tutorprocess', tuteeCommentController.saveTuteeComment)
+
+app.get('/showtuteeComment', tuteeCommentController.getAllTuteeComments)
+app.use(function(req,res,next){
+  //console.log("about to look for post routes!!!")
+  next()
+});
 
 
 
