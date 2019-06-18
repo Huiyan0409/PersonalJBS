@@ -43,4 +43,24 @@ exports.getAllTutorComments = ( req, res ) => {
     .then( () => {
       //console.log( 'skill promise complete' );
     } );
+  };
+    // this displays all of the skills
+exports.getOneTutorComment = ( req, res ) => {
+  //gconsle.log('in getAllSkills')
+  const id = req.params.id
+  console.log('the id is '+id)
+  TutorComment.findOne({_id:id})
+    .exec()
+    .then( ( tutorSingleComment ) => {
+      res.render( 'tutorSingleComment', {
+        tutorSingleComment:tutorSingleComment, title:"tutorSingleComment"
+      } );
+    } )
+    .catch( ( error ) => {
+      console.log( error.message );
+      return [];
+    } )
+    .then( () => {
+      //console.log( 'skill promise complete' );
+    } );
 };

@@ -1,0 +1,13 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>Comment for <%= tuteeSingleComment.tuteeName %> </h1>
+    </div>
+    tutor name: <%= tuteeSingleComment.tutorName %> <br>
+    tutee name: <%= tuteeSingleComment.tuteeName %> <br>
+    student score: <%= tuteeSingleComment.studentScore %> <br>
+    parent score: <%= tuteeSingleComment.parentScore %> <br>
+    comment: <%= tuteeSingleComment.comment %>
+    <hr>
+
+<%- include('bootfooter') -%>

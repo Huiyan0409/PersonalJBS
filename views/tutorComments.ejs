@@ -5,7 +5,7 @@
     </div>
     <ol>
     <%for(i=0; i<tutorComments.length; i++){ %>
-      <li>
+      <li>  <a href="/showtutorComments/<%= tutorComments[i]._id %>"> view</a>
             <i><%= tutorComments[i].tuteeName %></\/i>
             <i><%= tutorComments[i].tutorName %></\/i>
             <i><%= tutorComments[i].score %></\/i>

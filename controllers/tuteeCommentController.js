@@ -44,4 +44,24 @@ exports.getAllTuteeComments = ( req, res ) => {
     .then( () => {
       //console.log( 'skill promise complete' );
     } );
+  };
+
+    exports.getOneTuteeComment = ( req, res ) => {
+      //gconsle.log('in getAllSkills')
+      const id = req.params.id
+      console.log('the id is '+id)
+      TuteeComment.findOne({_id:id})
+        .exec()
+        .then( ( tuteeSingleComment ) => {
+          res.render( 'tuteeSingleComment', {
+            tuteeSingleComment:tuteeSingleComment, title:"tuteeSingleComment"
+          } );
+        } )
+        .catch( ( error ) => {
+          console.log( error.message );
+          return [];
+        } )
+        .then( () => {
+          //console.log( 'skill promise complete' );
+        } );
 };

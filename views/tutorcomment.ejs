@@ -38,7 +38,11 @@
       Comment: <textarea rows="4" cols="50" name ="comment"></textarea><br>
       <br>
       <br>
-      <input type="submit">
+      <% if(loggedIn){ %>
+        <input type="submit">
+        <% } else { %>
+          You must be logged in to submit form info.
+          <% } %>
     </form>
 
 <%- include('bootfooter') -%>
