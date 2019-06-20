@@ -11,6 +11,10 @@ var userSchema = Schema( {
   googlename:String,
   googleemail:String,
   description: String,
+  profilePicURL: String,
+  bio: String,
+  lastUpdate: Date,
+  userName: String
   //classIds:[Schema.Types.ObjectId],
   //classCodes:[String],
   //taEmail: String

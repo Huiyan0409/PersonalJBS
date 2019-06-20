@@ -25,6 +25,7 @@ db.once('open', function() {
 
 const tutorCommentController = require('./controllers/tutorCommentController')
 const tuteeCommentController = require('./controllers/tuteeCommentController')
+const profileController = require('./controllers/profileController')
 
 // Authentication
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -147,13 +148,33 @@ function isLoggedIn(req, res, next) {
 
 // we require them to be logged in to see their profile
 app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile')/*, {
-            user : req.user // get the user out of session and pass to template
-        });*/
+        res.render('profile')
     });
+app.get('/editProfile', isLoggedIn, function(req, res){
+  res.render('editProfile')
+});
+app.post('/updateProfile',profileController.update)
+
+app.get('/quiz1', function(req, res, next) {
+  res.render('quiz1',{title:"Quiz1"});
+});
+
+
+
+//app.post('/profileProcess', profileController.saveProfile)
+//app.get('/showProfiles', profileController.getAllProfiles)
+//app.get('/showProfile/:id', profileController.getOneProfile)
+
+//app.use(function(req,res,next){
+      //console.log("about to look for post routes!!!")
+    //next()
+//});
+
 
 // END OF THE AUTHENTICATION ROUTES
 
+//add page for editProfile and views
+//add router for updateProfile and send browser to profile
 
 //add here to create the logic of new page, new page in views
 app.use(function(req,res,next){
@@ -166,16 +187,16 @@ app.get('/', function(req, res, next) {
   res.render('index',{title:"TutorMatching Demo"});
 });
 
-app.get('/tutorcomment', function(req, res, next) {
-  res.render('tutorcomment',{title:"Tutor Comment"});
+app.get('/tutorForm', function(req, res, next) {
+  res.render('tutorForm',{title:"Tutor Comment"});
 });
 
-function processFormData(req,res,next){
+function processTutorData(req,res,next){
   //console.dir(req.body)
-  res.render('process',
+  res.render('tutorProcess',
     {title:"Form Data", tutorName:req.body.tutorName, coms:req.body.comment, score:req.body.inlineRadioOptions, tuteeName:req.body.tuteeName});
 }
-app.post('/process', tutorCommentController.saveTutorComment)
+app.post('/tutorProcess', tutorCommentController.saveTutorComment)
 
 app.get('/showtutorComment', tutorCommentController.getAllTutorComments)
 app.get('/showtutorComments/:id', tutorCommentController.getOneTutorComment)
@@ -186,17 +207,17 @@ app.use(function(req,res,next){
 });
 
 
-app.get('/tuteecomment', function(req, res, next) {
-  res.render('tuteecomment',{title:"Tutee Comment"});
+app.get('/tuteeForm', function(req, res, next) {
+  res.render('tuteeForm',{title:"Tutee Comment"});
 });
 
 
-function processFormData1(req,res,next){
+function processTuteeData(req,res,next){
   //console.dir(req.body)
-  res.render('tutorprocess',
+  res.render('tuteeProcess',
     {title:"Form Data", tutorName1:req.body.tutorName1, coms1:req.body.comment1, scoreStudent:req.body.inlineRadioOptionsStudent, scoreParent:req.body.inlineRadioOptionsParent, tuteeName1:req.body.tuteeName1});
 }
-app.post('/tutorprocess', tuteeCommentController.saveTuteeComment)
+app.post('/tuteeProcess', tuteeCommentController.saveTuteeComment)
 
 app.get('/showtuteeComment', tuteeCommentController.getAllTuteeComments)
 
