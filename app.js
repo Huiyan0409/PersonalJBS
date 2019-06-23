@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+
 // AUTHENTICATION MODULES
 session = require("express-session"),
 bodyParser = require("body-parser"),
@@ -153,17 +155,12 @@ app.get('/profile', isLoggedIn, function(req, res) {
 app.get('/editProfile', isLoggedIn, function(req, res){
   res.render('editProfile')
 });
+
+app.get('/showProfiles', profileController.getAllProfiles)
+app.get('/showProfile/:id', profileController.getOneProfile)
 app.post('/updateProfile',profileController.update)
 
-app.get('/quiz1', function(req, res, next) {
-  res.render('quiz1',{title:"Quiz1"});
-});
 
-
-
-//app.post('/profileProcess', profileController.saveProfile)
-//app.get('/showProfiles', profileController.getAllProfiles)
-//app.get('/showProfile/:id', profileController.getOneProfile)
 
 //app.use(function(req,res,next){
       //console.log("about to look for post routes!!!")
