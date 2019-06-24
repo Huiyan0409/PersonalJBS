@@ -1,12 +1,14 @@
 <%- include('bootheader') -%>
 <%- include('menubar') -%>
     <div class="jumbotron">
-        <h1>Profile for <%= user.userName %> </h1>
+        <h1>TutorMatching Profile for <%= profile.userName %></h1>
+        <img src="<%= profile.profilePicURL%>" width="200">
+        <hr>
+        <p> Welcome <%= profile.googlename %>
+            with email <%= profile.googleemail %>
+            You are logged in to TutorMatching.
+        </p>
+        <p> Last updated on <%= profile.lastUpdate %> </p>
     </div>
-    user name: <%= tutorSingleComment.tutorName %> <br>
-    google name: <%= tutorSingleComment.tuteeName %> <br>
-    score: <%= tutorSingleComment.score %> <br>
-    comment: <%= tutorSingleComment.comment %>
-    <hr>
 
 <%- include('bootfooter') -%>

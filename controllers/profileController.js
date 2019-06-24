@@ -46,9 +46,9 @@ exports.getAllProfiles = ( req, res ) => {
   //gconsle.log('in getAllSkills')
   User.find()
     .exec()
-    .then( ( showProfiles ) => {
-      res.render( 'showProfiles', {
-        profiles:showProfiles, title:"showProfiles"
+    .then( ( profiles ) => {
+      res.render( 'profiles', {
+        profiles:profiles, title:"Profiles"
       } );
     } )
     .catch( ( error ) => {
@@ -67,9 +67,9 @@ exports.getOneProfile = ( req, res ) => {
   console.log('the id is '+id)
   User.findOne({_id:id})
     .exec()
-    .then( ( showProfile ) => {
+    .then( ( profile ) => {
       res.render( 'showProfile', {
-        showProfile:showProfile, title:"Profile"
+        profile:profile, title:"Profile"
       } );
     } )
     .catch( ( error ) => {
