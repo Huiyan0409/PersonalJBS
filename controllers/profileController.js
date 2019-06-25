@@ -10,10 +10,8 @@ exports.update = ( req, res ) => {
   User.findOne(res.locals.user._id)
   .exec()
   .then((p) => {
-    console.log("just found a profile")
-    console.dir(p)
     p.userName = req.body.userName
-    p.profilePicURL = req.body.profilePicURL
+    //p.profilePicURL = req.body.profilePicURL
     p.zipcode = req.body.zipcode
 
     // make a call to zicode server to look up the city and state
@@ -42,12 +40,13 @@ exports.update = ( req, res ) => {
   })
 };
 
+
 exports.getAllProfiles = ( req, res ) => {
   //gconsle.log('in getAllSkills')
   User.find()
     .exec()
     .then( ( profiles ) => {
-      res.render( 'profiles', {
+      res.render( 'showProfiles', {
         profiles:profiles, title:"Profiles"
       } );
     } )

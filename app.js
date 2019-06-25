@@ -156,7 +156,7 @@ app.get('/editProfile', isLoggedIn, function(req, res){
   res.render('editProfile')
 });
 
-app.get('/profiles', isLoggedIn, profileController.getAllProfiles);
+app.get('/showProfiles', isLoggedIn, profileController.getAllProfiles);
 app.get('/showProfile/:id', isLoggedIn, profileController.getOneProfile);
 app.post('/updateProfile',profileController.update)
 
