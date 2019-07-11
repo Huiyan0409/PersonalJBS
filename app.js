@@ -233,7 +233,7 @@ app.use(function(req,res,next){
 
 app.get('/recipes', isLoggedIn, recipeController.getAllRecipes)
 app.post('/recipesProcess', isLoggedIn, recipeController.saveRecipe)
-
+app.post('/recipeDelete',isLoggedIn, recipeController.deleteRecipe)
 
 
 // catch 404 and forward to error handler

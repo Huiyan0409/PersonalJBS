@@ -15,7 +15,11 @@
              <i><%= recipes[i].ingredients %></\/i>
              <i><%= recipes[i].directions %></\/i>
              <i><%= recipes[i].author %></\/i>
-             <i><%= recipes[i].createdAt %></\/i> </li>
+             <i><%= recipes[i].createdAt %></\/i>
+             <i><% if (recipes[i].userId.equals(user._id)) { %>
+                  <input type="submit" name="delete" value="<%= recipes[i]._id %>">
+                 <% } %>
+            </\/i> </li>
     <% } %>
     </ol>
 <%- include('bootfooter') -%>
