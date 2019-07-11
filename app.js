@@ -30,6 +30,7 @@ db.once('open', function() {
 const tutorCommentController = require('./controllers/tutorCommentController')
 const tuteeCommentController = require('./controllers/tuteeCommentController')
 const profileController = require('./controllers/profileController')
+const recipeController = require('./controllers/recipeController')
 
 // Authentication
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -225,6 +226,13 @@ app.use(function(req,res,next){
   //console.log("about to look for post routes!!!")
   next()
 });
+
+
+//for quiz2
+
+
+app.get('/recipes', isLoggedIn, recipeController.getAllRecipes)
+app.post('/recipesProcess', isLoggedIn, recipeController.saveRecipe)
 
 
 
