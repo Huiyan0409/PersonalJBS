@@ -11,14 +11,18 @@
   </form>
   <ol>
     <% for(i = 0; i<recipes.length; i++){  %>
-        <li> <i><%= recipes[i].name %></i>
-             <i><%= recipes[i].ingredients %></i>
-             <i><%= recipes[i].directions %></i>
-             <i><%= recipes[i].author %></i>
-             <i><%= recipes[i].createdAt %></i>
-             <i><% if (recipes[i].userId==user._id) { %>
-                  <input type="submit" name="delete" value="<%= recipes[i]._id %>">
+        <li> <i>Name: <%= recipes[i].name %></i><br>
+             <i>Ingredients: <%= recipes[i].ingredients %></i><br>
+             <i>Directions: <%= recipes[i].directions %></i><br>
+             <i>Author: <%= recipes[i].author %></i><br>
+             <i>CreatedAt: <%= recipes[i].createdAt %></i><br>
+             <i><% if (recipes[i].userId.equals(user._id)) { %>
+                <form method="post" action="/recipeDelete">
+                  <input type="hidden" name="delete" value="<%=recipes[i]._id%>">
+                  <input class="btn btn-sm btn-outline-danger" type="submit" value="delete">
+                </form>
                  <% } %>
+            <br>
             </i> </li>
     <% } %>
     </ol>

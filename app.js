@@ -17,10 +17,11 @@ flash = require('connect-flash')
 //var usersRouter = require('./routes/users');
 
 //connect to mongodb
-const MONGODB_URI = "mongodb://heroku_j746xqd0:f57g2n7sqd9o0sridtcb3unlh@ds245927.mlab.com:45927/heroku_j746xqd0"
+//const MONGODB_URI = "mongodb://heroku_j746xqd0:f57g2n7sqd9o0sridtcb3unlh@ds245927.mlab.com:45927/heroku_j746xqd0"
 const mongoose = require( 'mongoose' );
+mongoose.connect( 'mongodb://localhost/mydb', { useNewUrlParser: true } );
 //mongoose.connect( 'mongodb://localhost/tutorMatching' );
-mongoose.connect(MONGODB_URI, {userNewUrlParser: true});
+//mongoose.connect(MONGODB_URI, {userNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
