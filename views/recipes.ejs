@@ -11,15 +11,15 @@
   </form>
   <ol>
     <% for(i = 0; i<recipes.length; i++){  %>
-        <li> <i><%= recipes[i].name %></\/i>
-             <i><%= recipes[i].ingredients %></\/i>
-             <i><%= recipes[i].directions %></\/i>
-             <i><%= recipes[i].author %></\/i>
-             <i><%= recipes[i].createdAt %></\/i>
-             <i><% if (recipes[i].userId.equals(User._id)) { %>
+        <li> <i><%= recipes[i].name %></i>
+             <i><%= recipes[i].ingredients %></i>
+             <i><%= recipes[i].directions %></i>
+             <i><%= recipes[i].author %></i>
+             <i><%= recipes[i].createdAt %></i>
+             <i><% if (recipes[i].userId==user._id) { %>
                   <input type="submit" name="delete" value="<%= recipes[i]._id %>">
                  <% } %>
-            </\/i> </li>
+            </i> </li>
     <% } %>
     </ol>
 <%- include('bootfooter') -%>
