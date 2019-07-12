@@ -9,6 +9,10 @@
     A discription of how to make the dish: <textarea rows="4" cols="50" name ="directions"></textarea><br><br>
     <input type="submit" class="btn btn-lg btn-primary">
   </form>
+
+  <hr>
+  <form method="post" action="/recipeDelete">
+  <input class="btn btn-sm btn-outline-danger" type="submit" value="delete marked">
   <ol>
     <% for(i = 0; i<recipes.length; i++){  %>
         <li> <i>Name: <%= recipes[i].name %></i><br>
@@ -17,13 +21,11 @@
              <i>Author: <%= recipes[i].author %></i><br>
              <i>CreatedAt: <%= recipes[i].createdAt %></i><br>
              <i><% if (recipes[i].userId.equals(user._id)) { %>
-                <form method="post" action="/recipeDelete">
-                  <input type="hidden" name="delete" value="<%=recipes[i]._id%>">
-                  <input class="btn btn-sm btn-outline-danger" type="submit" value="delete">
-                </form>
+                  <input type="checkbox" name="delete" value="<%=recipes[i]._id%>"
                  <% } %>
             <br>
             </i> </li>
     <% } %>
     </ol>
+  </form>
 <%- include('bootfooter') -%>
