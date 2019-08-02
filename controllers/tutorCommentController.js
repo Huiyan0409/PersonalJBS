@@ -69,21 +69,12 @@ exports.getOneTutorComment = ( req, res ) => {
 
 exports.getParticularTutorComments = ( req, res) => {
   //gconsle.log('in getAllSkills')
-  const id = req.params.id
-  let tutorName = null
-  Tutor.findOne({_id:id})
-    .exec()
-    .then( ( tutor ) => {
-      console.log(tutor.userName)
-      tutorName = tutor.userName
-      console.log(tutorName)
-  } )
-  TutorComment.find({tutorName: tutorName})
+  const userName = req.params.userName
+  TutorComment.find({tutorName: userName})
     .exec()
     .then( ( tutorComments ) => {
       //console.log('found skills')
       //console.dir(tutorComments)
-      console.log(tutorName)
       res.render( 'tutorParticularComments', {
         tutorComments: tutorComments,title:"tutorComments"
       } );

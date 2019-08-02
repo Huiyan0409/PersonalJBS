@@ -70,14 +70,8 @@ exports.getAllTuteeComments = ( req, res ) => {
 
 exports.getParticularTuteeComments = ( req, res) => {
   //gconsle.log('in getAllSkills')
-  const id = req.params.id
-  let name = ""
-  Tutee.findOne({_id:id})
-    .exec()
-    .then( ( tutee ) => {
-      name = tutee.userName.toString()
-  } )
-  TuteeComment.find({tuteeName: name}).sort({tuteeName: -1})
+  const userName = req.params.userName
+  TuteeComment.find({tuteeName: userName})
     .exec()
     .then( ( tuteeComments ) => {
       //console.log('found skills')

@@ -201,7 +201,7 @@ app.post('/tutorProcess', tutorCommentController.saveTutorComment)
 
 app.get('/showtutorComment', tutorCommentController.getAllTutorComments)
 app.get('/showtutorComments/:id', tutorCommentController.getOneTutorComment)
-app.get('/tutorParticularComments/:id', tutorCommentController.getParticularTutorComments)
+app.get('/tutorParticularComments/:userName', tutorCommentController.getParticularTutorComments)
 app.get('/tutorConfirm/:id', tutorController.getPaticularTutor)
 
 app.use(function(req,res,next){
@@ -239,7 +239,7 @@ app.get('/showTutors', tutorController.getAllTutor)
 app.get('/showTutor/:id', tutorController.getOneTutor)
 
 
-app.get('/tuteeParticularComments/:id', tuteeCommentController.getParticularTuteeComments)
+app.get('/tuteeParticularComments/:userName', tuteeCommentController.getParticularTuteeComments)
 app.get('/tuteeConfirm/:id', tuteeController.getPaticularTutee)
 app.get('/tuteeRegistor', function(req, res, next) {
   res.render('tuteeRegistor',{title:"Tutee Register"});
