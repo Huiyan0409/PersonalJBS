@@ -1,0 +1,23 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>Detail for tutor: <%= tutor.userName %> </h1>
+    </div>
+    Introduction: <%= tutor.introduction %> <br>
+    <br>
+    <br>
+    Available subject: <%= tutor.subject %> <br>
+    <br>
+    <br>
+    Salary: <%= tutor.salary %> <br>
+    <br>
+    <br>
+    CreateAt: <%= tutor.createdAt %> <br>
+    <br>
+    <br>
+    Comments: <a href="/tutorParticularComments/<%= tutor._id %>">view comments</a>
+    <br>
+    <br>
+    <br>
+    <button type="button" class="btn btn-light"><a href="/tutorConfirm/<%= tutor._id %>">Select as my tutor</a></button>
+<%- include('bootfooter') -%>

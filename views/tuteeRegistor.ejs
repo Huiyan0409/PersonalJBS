@@ -1,0 +1,28 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>Register as a tutee here!</h1>
+    </div>
+
+    <form method="post" action="/tuteeRegisterProcess">
+      Your email: <input type="text" name="email"><br>
+      <br>
+      <br>
+      A brief introduction of you as a tutee: <textarea rows="4" cols="50" name ="introduction"></textarea><br>
+      <br>
+      <br>
+      Your available payment: <input type="text" name="payment"><br>
+      <br>
+      <br>
+      The subject you need help with: <input type="text" name="subject"><br>
+      <br>
+      <br>
+      <% if(loggedIn){ %>
+        <input type="submit">
+        <% } else { %>
+          You must be logged in to submit form info.
+          <% } %>
+
+    </form>
+
+<%- include('bootfooter') -%>

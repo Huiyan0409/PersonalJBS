@@ -11,9 +11,8 @@
         <p> Last updated on <%= user.lastUpdate %> </p>
         <hr>
         <form method="post" action="/updateProfile">
-          userName: <input type="text" name="userName" value="<%= user.userName %>"><br>
-          profileURL: <input type="text" name="profileURL" value="<%= user.profileURL %>"><br>
-          zipcode: <input type = "text" name = "zipcode" value="<%= user.zipcode %>"><br>
+          Name: <input type="text" name="userName" value="<%= user.userName %>"><br>
+          Zipcode: <input type = "text" name = "zipcode" value="<%= user.zipcode %>"><br>
           <input type="submit" class="btn btn-lg btn-primary">
         </form>
     </div>

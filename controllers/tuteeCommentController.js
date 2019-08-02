@@ -1,5 +1,6 @@
 'use strict';
 const TuteeComment = require( '../models/tuteeComment' );
+const Tutee = require( '../models/tutee' );
 
 exports.saveTuteeComment = ( req, res ) => {
   //console.log("in saveSkill!")
@@ -24,6 +25,7 @@ exports.saveTuteeComment = ( req, res ) => {
       res.send( error );
     } );
 };
+
 
 exports.getAllTuteeComments = ( req, res ) => {
   //gconsle.log('in getAllSkills')
@@ -64,4 +66,30 @@ exports.getAllTuteeComments = ( req, res ) => {
         .then( () => {
           //console.log( 'skill promise complete' );
         } );
+};
+
+exports.getParticularTuteeComments = ( req, res) => {
+  //gconsle.log('in getAllSkills')
+  const id = req.params.id
+  let name = ""
+  Tutee.findOne({_id:id})
+    .exec()
+    .then( ( tutee ) => {
+      name = tutee.userName.toString()
+  } )
+  TuteeComment.find({tuteeName: name}).sort({tuteeName: -1})
+    .exec()
+    .then( ( tuteeComments ) => {
+      //console.log('found skills')
+      //console.dir(tutorComments)
+      // console.log("information: ")
+      // console.dir(tuteeComments)
+      res.render( 'tuteeParticularComments', {
+        tuteeComments: tuteeComments,title:"tuteeComments"
+      } );
+    } )
+  .catch( ( error ) => {
+    console.log( error.message );
+    return [];
+  } )
 };

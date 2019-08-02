@@ -1,15 +1,23 @@
+
 <!--This is the main page when you start-->
 <%- include('bootheader') -%>
 <%- include('menubar') -%>
-    <div class="jumbotron">
-        <h1>Tutor Matching</h1>
-        <p>We're here to help you find the best tutor!</p>
+<div class="jumbotron">
+    <h1>Tutor Matching</h1>
+    <p>We're here to help you find the best tutor!</p>
+</div>
+
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12 col-md-6">
+      <img src="../images/student.jpg" alt="student" width = "400px" height = "400px">
     </div>
-    <ul>
-      <li><a href="/tutorForm">Filling a comment for your tutor!</a></li>
-      <br>
-      <li><a href="/tuteeForm">Filling a comment for your tutee!</a></li>
-      <br>
-      <li><a href="/recipes">Quiz 3</a></li>
-    </ul>
+    <div class = "col-sm-12 col-md-6">
+      <h2>No worries! We're here!<h2>
+      <br><br>
+      <button type="button" class="btn btn-outline-primary btn-lg"><a href="/showTutors">Find A Tutor</a></button>
+      <br><br>
+      <button type="button" class="btn btn-outline-primary btn-lg"><a href="/showTutees">Find A Tutee</a></button>
+    </div>
+</div>
 <%- include('bootfooter') -%>

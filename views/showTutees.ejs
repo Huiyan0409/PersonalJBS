@@ -1,0 +1,16 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>Tutees</h1>
+    </div>
+    <ol>
+    <%for(i=0; i<tutees.length; i++){ %>
+      <li>  <a href="/showTutee/<%= tutees[i]._id %>"> view</a><br>
+            <i>Name: <%= tutees[i].userName %></\/i><br>
+            <i>Required subjects: <%= tutees[i].subject %></\/i><br>
+            <i>Introduction: <%= tutees[i].introduction %></\/i><br>
+            <i>Payment: <%= tutees[i].payment %></\/i><br>
+            <i>Required a tutor at: <%= tutees[i].createdAt %></\/i><br><br>
+    <% }%>
+    </ol>
+<%- include('bootfooter') -%>

@@ -19,8 +19,7 @@ flash = require('connect-flash')
 //connect to mongodb
 //const MONGODB_URI = "mongodb://heroku_j746xqd0:f57g2n7sqd9o0sridtcb3unlh@ds245927.mlab.com:45927/heroku_j746xqd0"
 const mongoose = require( 'mongoose' );
-mongoose.connect( 'mongodb://localhost/mydb', { useNewUrlParser: true } );
-//mongoose.connect( 'mongodb://localhost/tutorMatching' );
+mongoose.connect( 'mongodb://localhost/tutorMatching', { useNewUrlParser: true } );
 //mongoose.connect(MONGODB_URI, {userNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -32,7 +31,8 @@ const tutorCommentController = require('./controllers/tutorCommentController')
 const tuteeCommentController = require('./controllers/tuteeCommentController')
 const profileController = require('./controllers/profileController')
 const recipeController = require('./controllers/recipeController')
-
+const tutorController = require('./controllers/tutorController')
+const tuteeController = require('./controllers/tuteeController')
 // Authentication
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 // here we set up authentication with passport
@@ -201,6 +201,8 @@ app.post('/tutorProcess', tutorCommentController.saveTutorComment)
 
 app.get('/showtutorComment', tutorCommentController.getAllTutorComments)
 app.get('/showtutorComments/:id', tutorCommentController.getOneTutorComment)
+app.get('/tutorParticularComments/:id', tutorCommentController.getParticularTutorComments)
+app.get('/tutorConfirm/:id', tutorController.getPaticularTutor)
 
 app.use(function(req,res,next){
   //console.log("about to look for post routes!!!")
@@ -228,6 +230,24 @@ app.use(function(req,res,next){
   next()
 });
 
+app.get('/tutorRegistor', function(req, res, next) {
+  res.render('tutorRegistor',{title:"Tutor Register"});
+});
+app.post('/tutorRegisterProcess', tutorController.saveTutor)
+
+app.get('/showTutors', tutorController.getAllTutor)
+app.get('/showTutor/:id', tutorController.getOneTutor)
+
+
+app.get('/tuteeParticularComments/:id', tuteeCommentController.getParticularTuteeComments)
+app.get('/tuteeConfirm/:id', tuteeController.getPaticularTutee)
+app.get('/tuteeRegistor', function(req, res, next) {
+  res.render('tuteeRegistor',{title:"Tutee Register"});
+});
+app.post('/tuteeRegisterProcess', tuteeController.saveTutee)
+
+app.get('/showTutees', tuteeController.getAllTutee)
+app.get('/showTutee/:id', tuteeController.getOneTutee)
 
 //for quiz2
 

@@ -1,8 +1,14 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #ffffff url("2.jpg") no-repeat;
+  /* background: radial-gradient(circle, #8a95ff, white); */
 }
 
 a {
   color: #00B7FF;
+}
+
+.jumbotron{
+  background-color: #f2f2f2;
 }
