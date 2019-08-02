@@ -197,12 +197,12 @@ function processTutorData(req,res,next){
   res.render('tutorProcess',
     {title:"Form Data", tutorName:req.body.tutorName, coms:req.body.comment, score:req.body.inlineRadioOptions, tuteeName:req.body.tuteeName});
 }
-app.post('/tutorProcess', tutorCommentController.saveTutorComment)
+app.post('/tutorProcess', isLoggedIn,tutorCommentController.saveTutorComment)
 
-app.get('/showtutorComment', tutorCommentController.getAllTutorComments)
-app.get('/showtutorComments/:id', tutorCommentController.getOneTutorComment)
-app.get('/tutorParticularComments/:userName', tutorCommentController.getParticularTutorComments)
-app.get('/tutorConfirm/:id', tutorController.getPaticularTutor)
+app.get('/showtutorComment', isLoggedIn,tutorCommentController.getAllTutorComments)
+app.get('/showtutorComments/:id', isLoggedIn,tutorCommentController.getOneTutorComment)
+app.get('/tutorParticularComments/:userName', isLoggedIn,tutorCommentController.getParticularTutorComments)
+app.get('/tutorConfirm/:id', isLoggedIn,tutorController.getPaticularTutor)
 
 app.use(function(req,res,next){
   //console.log("about to look for post routes!!!")
@@ -220,11 +220,11 @@ function processTuteeData(req,res,next){
   res.render('tuteeProcess',
     {title:"Form Data", tutorName1:req.body.tutorName1, coms1:req.body.comment1, scoreStudent:req.body.inlineRadioOptionsStudent, scoreParent:req.body.inlineRadioOptionsParent, tuteeName1:req.body.tuteeName1});
 }
-app.post('/tuteeProcess', tuteeCommentController.saveTuteeComment)
+app.post('/tuteeProcess', isLoggedIn,tuteeCommentController.saveTuteeComment)
 
-app.get('/showtuteeComment', tuteeCommentController.getAllTuteeComments)
+app.get('/showtuteeComment', isLoggedIn,tuteeCommentController.getAllTuteeComments)
 
-app.get('/showtuteeComments/:id', tuteeCommentController.getOneTuteeComment)
+app.get('/showtuteeComments/:id', isLoggedIn,tuteeCommentController.getOneTuteeComment)
 app.use(function(req,res,next){
   //console.log("about to look for post routes!!!")
   next()
@@ -233,21 +233,21 @@ app.use(function(req,res,next){
 app.get('/tutorRegistor', function(req, res, next) {
   res.render('tutorRegistor',{title:"Tutor Register"});
 });
-app.post('/tutorRegisterProcess', tutorController.saveTutor)
+app.post('/tutorRegisterProcess', isLoggedIn,tutorController.saveTutor)
 
 app.get('/showTutors', tutorController.getAllTutor)
-app.get('/showTutor/:id', tutorController.getOneTutor)
+app.get('/showTutor/:id', isLoggedIn,tutorController.getOneTutor)
 
 
-app.get('/tuteeParticularComments/:userName', tuteeCommentController.getParticularTuteeComments)
-app.get('/tuteeConfirm/:id', tuteeController.getPaticularTutee)
+app.get('/tuteeParticularComments/:userName', isLoggedIn,tuteeCommentController.getParticularTuteeComments)
+app.get('/tuteeConfirm/:id', isLoggedIn,tuteeController.getPaticularTutee)
 app.get('/tuteeRegistor', function(req, res, next) {
   res.render('tuteeRegistor',{title:"Tutee Register"});
 });
-app.post('/tuteeRegisterProcess', tuteeController.saveTutee)
+app.post('/tuteeRegisterProcess', isLoggedIn,tuteeController.saveTutee)
 
 app.get('/showTutees', tuteeController.getAllTutee)
-app.get('/showTutee/:id', tuteeController.getOneTutee)
+app.get('/showTutee/:id', isLoggedIn,tuteeController.getOneTutee)
 
 //for quiz2
 
